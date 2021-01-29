@@ -8,7 +8,7 @@ Textfield[][] Koordinater = new Textfield[3][2];
 
 // Textfield variables
 int[] koordinatBoxPosition = {50, 50};
-int[] koordinatBoxSize = {80, 50};
+int[] koordinatBoxSize = {80, 20};
 
 // Button
 Button executeButton;
@@ -17,7 +17,7 @@ Button executeButton;
 void setup(){
   size(800, 800);
   // Skrifttype og størrelse
-  PFont font = createFont("arial", 24);
+  PFont font = createFont("arial", 18);
   textFont(font);
   
   // Initiering af CP5
@@ -25,15 +25,22 @@ void setup(){
   
   // Initering af tekstfelter
   int n = 1;
-  for(int i = 0; i < 3; i++){
+  for(int i = 0; i < 3; i++){ //<>//
     int y = 0;
     for(int j = 0; j < 2; j++){
       int x = 0;
       
+      // du har ikke mindre en 5 tællere!! n,i,y,j,x !!!!!!!!!!!!
+      
       Koordinater[i][j] = cp5.addTextfield("input", str(n));
+      
+          
+          // her er dit problem din X og Y er 0
+          print("y: ",y," ");  
+          println("x: ",x);
       n++;
       
-      Koordinater[i][j].setPosition(koordinatBoxPosition[0] + x, koordinatBoxPosition[1] + y)
+      Koordinater[i][j].setPosition(koordinatBoxPosition[0] * x, koordinatBoxPosition[1] + y)
         .setSize(koordinatBoxSize[0], koordinatBoxSize[1])
         .setFont(font)
         .setColor(color(255))
@@ -43,6 +50,8 @@ void setup(){
         ;
         
         x += koordinatBoxSize[0];
+        
+        
     }
     y += koordinatBoxSize[1] + 10;
   }
